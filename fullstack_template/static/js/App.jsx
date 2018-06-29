@@ -18,7 +18,7 @@ export default class App extends React.Component {
     }
 
     getConcerts () {
-        axios.get(`/getConcerts/${this.state.band}?location=${this.state.location}`)
+        axios.get(`/getConcerts/${this.state.band}`)
             .then(res => {
                 const concertsData = res.data;
                 console.log(concertsData[0]);
@@ -40,7 +40,6 @@ export default class App extends React.Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Band" name="band" value={this.state.band} onChange={this.handleChange} />
-                    <input type="text" placeholder="Location" name="location" value={this.state.location} onChange={this.handleChange} />
                     <input type="submit" value="Submit" />
                 </form>
                 {this.state.concertsData.map(concert => (
